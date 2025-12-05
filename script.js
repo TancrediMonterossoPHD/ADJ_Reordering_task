@@ -1,37 +1,40 @@
-
 const items = [
-  ["il", "rosso", "grande", "cane", "vecchio"],
-  ["il", "giovane", "piccolo", "gatto", "blu"],
-  ["il", "buono", "grande", "libro", "verde"],
-  ["il", "vecchio", "cattivo", "bicchiere", "trasparente"],
-  ["il", "rosso", "ruvido", "piatto", "piccolo"],
-  ["il", "lento", "vecchio", "camion", "grande"],
-  ["il", "verde", "giovane", "albero", "alto"],
-  ["il", "piccolo", "buono", "orologio", "blu"],
-  ["il", "grande", "rosso", "scarpa", "vecchio"],
-  ["il", "cattivo", "piccolo", "fiore", "giallo"],
-  ["il", "vecchio", "ruvido", "tavolo", "grande"],
-  ["il", "giacca", "blu", "piccolo", "buono"],
-  ["il", "bicicletta", "lenta", "vecchia", "rossa"],
-  ["il", "penna", "verde", "piccola", "buona"],
-  ["il", "matita", "gialla", "grande", "vecchia"],
-  ["il", "porta", "rossa", "vecchia", "ruvida"],
-  ["il", "finestra", "blu", "piccola", "cattiva"],
-  ["il", "scarpa", "grande", "vecchia", "lenta"],
-  ["il", "camion", "rosso", "cattivo", "veloce"],
-  ["il", "libro", "buono", "vecchio", "verde"]
+  ["the", "big", "old", "dog", "red"],
+  ["the", "young", "small", "cat", "blue"],
+  ["the", "good", "large", "book", "green"],
+  ["the", "old", "bad", "glass", "clear"],
+  ["the", "red", "rough", "plate", "small"],
+  ["the", "slow", "old", "truck", "large"],
+  ["the", "green", "young", "tree", "tall"],
+  ["the", "small", "good", "watch", "blue"],
+  ["the", "large", "red", "shoe", "old"],
+  ["the", "bad", "small", "flower", "yellow"],
+  ["the", "old", "rough", "table", "big"],
+  ["the", "jacket", "blue", "small", "good"],
+  ["the", "bicycle", "slow", "old", "red"],
+  ["the", "pen", "green", "small", "good"],
+  ["the", "pencil", "yellow", "large", "old"],
+  ["the", "door", "red", "old", "rough"],
+  ["the", "window", "blue", "small", "bad"],
+  ["the", "shoe", "large", "old", "slow"],
+  ["the", "truck", "red", "bad", "fast"],
+  ["the", "book", "good", "old", "green"]
 ];
 
 let indiceItem = 0;
 let risultati = [];
 let nomePartecipante = "";
 let startTime = 0;
-let timerInterval;
+
+function showNameInput() {
+  document.getElementById("intro-page").style.display = "none";
+  document.getElementById("intro").style.display = "block";
+}
 
 function iniziaTest() {
   nomePartecipante = document.getElementById("nome").value.trim();
   if (!nomePartecipante) {
-    alert("Nome obbligatorio.");
+    alert("Name is required.");
     return;
   }
   document.getElementById("intro").style.display = "none";
@@ -41,18 +44,17 @@ function iniziaTest() {
 
 function avviaItem() {
   if (indiceItem >= items.length) {
-    clearInterval(timerInterval);
     mostraRiepilogo();
     return;
   }
 
-
+  startTime = Date.now();
   aggiornaProgressBar();
 
   const elementi = shuffle([...items[indiceItem]]);
 
   document.getElementById("istruzioni").textContent =
-    `Item ${indiceItem + 1}: Ordina le parole per formare il sintagma corretto.`;
+    `Item ${indiceItem + 1}: Arrange the words to form the correct phrase.`;
 
   const container = document.getElementById("elementi");
   container.innerHTML = "";
@@ -99,14 +101,26 @@ function mostraRiepilogo() {
   const totalTime = risultati.reduce((sum, r) => sum + r.tempo_secondi, 0);
   const avgTime = totalTime / risultati.length;
 
-  document.getElementById("total-time").textContent = `Tempo totale: ${totalTime.toFixed(1)} secondi`;
-  document.getElementById("average-time").textContent = `Tempo medio per item: ${avgTime.toFixed(1)} secondi`;
+  document.getElementById("total-time").textContent = `Total time: ${totalTime.toFixed(1)} seconds`;
+  document.getElementById("average-time").textContent = `Average time per item: ${avgTime.toFixed(1)} seconds`;
 }
 
 function scaricaRisultati() {
-  const blob = new Blob([JSON.stringify(risultati, null, 2)], { type: "application/json" });
-  const link = document.createElement("a");
-  link.href = URL.createObjectURL(blob);
-  link.download = `${nomePartecipante}_risultati.json`;
-  link.click();
+  const data = {
+    nome: nomePartecipante,
+    results: JSON.stringify(risultati, null, 2)
+  };
+
+  emailjs.send("service_10hsey6", "template_ptzd974", data)
+    .then(() => {
+      alert("✅ Results sent successfully!");
+    }, (error) => {
+      alert("❌ Failed to send results: " + JSON.stringify(error));
+      // Fallback: download results as .txt
+      const blob = new Blob([JSON.stringify(data, null, 2)], { type: "text/plain" });
+      const link = document.createElement("a");
+      link.href = URL.createObjectURL(blob);
+      link.download = `results_${nomePartecipante}.txt`;
+      link.click();
+    });
 }

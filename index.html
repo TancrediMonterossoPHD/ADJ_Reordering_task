@@ -1,35 +1,62 @@
-
 <!DOCTYPE html>
-<html lang="it">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Ordinamento Sintagmi</title>
+  <title>Linguistic Test</title>
   <link rel="stylesheet" href="style.css">
+
+  <!-- SortableJS for drag-and-drop -->
   <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.0/Sortable.min.js"></script>
+
+  <!-- EmailJS SDK -->
+  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+  <script>
+    (function() {
+      emailjs.init("yZ1k4hlJgq6uPC0GL"); // Replace with your EmailJS public key
+    })();
+  </script>
 </head>
 <body>
   <div id="app">
-    <h2>Ordinamento Sintagmi Nominali</h2>
-    <div id="intro">
-      <label for="nome">Inserisci il tuo nome:</label>
-      <input type="text" id="nome" />
-      <button onclick="iniziaTest()">Inizia</button>
+    <!-- Intro Page -->
+    <div id="intro-page">
+      <h2>Welcome to the Linguistic Test for Tancredi Monterosso's PHD project</h2>
+      <p style="text-align:center; font-size:16px; margin-bottom:20px;">
+        In this experiment, you will be presented with 20 sets of words that form noun phrases.
+        Your task is to arrange the words in the order that feels most natural by dragging them into place.
+        When you think the order is correct, click “Confirm Order” to move to the next item.
+        Thank you for your participation!
+      </p>
+      <button onclick="showNameInput()">Start</button>
     </div>
+
+    <!-- Name Input -->
+    <div id="intro" style="display:none;">
+      <label for="nome">Enter your name:</label>
+      <input type="text" id="nome" />
+      <button onclick="iniziaTest()">Begin Test</button>
+    </div>
+
+    <!-- Test Section -->
     <div id="test" style="display:none;">
       <p id="istruzioni"></p>
       <div id="elementi" class="container"></div>
-      <button onclick="confermaOrdine()">Conferma Ordine</button>
+      <button onclick="confermaOrdine()">Confirm Order</button>
       <div id="progress-container">
         <div id="progress-bar"></div>
       </div>
     </div>
+
+    <!-- Summary -->
     <div id="summary" style="display:none;">
-      <h3>Riepilogo del Test</h3>
+      <h3>Test Summary</h3>
       <p id="total-time"></p>
       <p id="average-time"></p>
-      <button onclick="scaricaRisultati()">Scarica Risultati</button>
+      <button onclick="scaricaRisultati()">Send Results via Email</button>
     </div>
   </div>
+
+  <!-- Your JS logic -->
   <script src="script.js"></script>
 </body>
 </html>
