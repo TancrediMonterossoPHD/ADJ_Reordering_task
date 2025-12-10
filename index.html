@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Linguistic Test</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-UTF-8" />
+  <title>Adjective Ordering Test</title>
+  <link rel="stylesheet" href="style.css" />
 
   <!-- SortableJS for drag-and-drop -->
   <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.0/Sortable.min.js"></script>
@@ -11,52 +11,77 @@
   <!-- EmailJS SDK -->
   <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
   <script>
-    (function() {
-      emailjs.init("yZ1k4hlJgq6uPC0GL"); // Replace with your EmailJS public key
+    (function () {
+      emailjs.init("yZ1k4hlJgq6uPC0GL");  <!-- tua public key -->
     })();
   </script>
 </head>
 <body>
   <div id="app">
-    <!-- Intro Page -->
-    <div id="intro-page">
-      <h2>Welcome to the Linguistic Test for Tancredi Monterosso's PHD project</h2>
-      <p style="text-align:center; font-size:16px; margin-bottom:20px;">
-        In this experiment, you will be presented with 20 sets of words that form noun phrases.
-        Your task is to arrange the words in the order that feels most natural by dragging them into place.
-        When you think the order is correct, click “Confirm Order” to move to the next item.
-        Thank you for your participation!
+
+    <!-- 1) SCHERMATA SCELTA LINGUA -->
+    <div id="language-page">
+      <h1>Adjective Ordering Test</h1>
+
+      <p id="welcome-text">
+        Welcome to the Adjective ordering test by Tancredi Monterosso (UNIBZ / UNIVR)
       </p>
-      <button onclick="showNameInput()">Start</button>
+
+      <div id="language-buttons">
+        <p>Choose your language / Scegli la lingua:</p>
+        <button onclick="setLanguage('en')">Start in English</button>
+        <button onclick="setLanguage('it')">Inizia in Italiano</button>
+      </div>
     </div>
 
-    <!-- Name Input -->
+
+    <!-- 2) INTRO + INSERIMENTO NOME -->
     <div id="intro" style="display:none;">
-      <label for="nome">Enter your name:</label>
+      <p id="intro-text" class="intro-paragraph">
+        In this experiment, you will be presented with 20 sets of words that form noun phrases.
+        Your task is to arrange the words in the most natural order. Drag the words, then press
+        “Confirm Order” to continue.
+      </p>
+
+      <label id="name-label" for="nome">Enter your name:</label>
       <input type="text" id="nome" />
-      <button onclick="iniziaTest()">Begin Test</button>
+
+      <button id="begin-button" onclick="iniziaTest()">Begin Test</button>
     </div>
 
-    <!-- Test Section -->
+
+    <!-- 3) TEST -->
     <div id="test" style="display:none;">
+      <h2>Test</h2>
+
       <p id="istruzioni"></p>
-      <div id="elementi" class="container"></div>
-      <button onclick="confermaOrdine()">Confirm Order</button>
+
+      <div id="elementi" class="elementi-container"></div>
+
+      <button id="confirm-button" onclick="confermaOrdine()">
+        Confirm Order
+      </button>
+
       <div id="progress-container">
         <div id="progress-bar"></div>
       </div>
     </div>
 
-    <!-- Summary -->
+
+    <!-- 4) RIEPILOGO -->
     <div id="summary" style="display:none;">
-      <h3>Test Summary</h3>
+      <h3 id="summary-title">Test Summary</h3>
+
       <p id="total-time"></p>
       <p id="average-time"></p>
-      <button onclick="scaricaRisultati()">Send Results via Email</button>
+
+      <button id="send-results" onclick="scaricaRisultati()">
+        Send Results via Email
+      </button>
     </div>
+
   </div>
 
-  <!-- Your JS logic -->
   <script src="script.js"></script>
 </body>
 </html>
