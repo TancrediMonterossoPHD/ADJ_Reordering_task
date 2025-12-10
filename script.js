@@ -71,7 +71,7 @@ function setLanguage(lang) {
   if (lang === "it") {
     if (introText) {
       introText.textContent =
-        "In questo esperimento ti verranno presentati 20 insiemi di parole che formano sintagmi nominali. " +
+        "In questo esperimento ti verranno presentati 20 insiemi di parole che formano dei sintagmi nominali. " +
         "Il tuo compito è di disporre le parole nell'ordine che ti sembra più naturale trascinandole. " +
         "Quando pensi che l’ordine sia corretto, clicca su \"Conferma ordine\" per passare all’item successivo. " +
         "Grazie per la partecipazione!";
@@ -85,7 +85,7 @@ function setLanguage(lang) {
     if (introText) {
       introText.textContent =
         "In this experiment, you will be presented with 20 sets of words that form noun phrases. " +
-        "Your task is to arrange the words in the order that feels most natural by dragging them into place. " +
+        "Your task is to arrange the words in the order that feels most natural to you by dragging them into place. " +
         "When you think the order is correct, click \"Confirm Order\" to move to the next item. " +
         "Thank you for your participation!";
     }
