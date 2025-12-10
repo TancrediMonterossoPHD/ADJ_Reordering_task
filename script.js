@@ -32,7 +32,7 @@ const italianItems = [
   ["il", "lento", "vecchio", "camion", "grande"],
   ["il", "verde", "giovane", "albero", "alto"],
   ["il", "piccolo", "brutto", "anatroccolo", "grigio"],
-  ["la", "grande", "rossa", "scarpa", "vecchio"],
+  ["la", "grande", "rossa", "scarpa", "vecchia"],
   ["il", "carino", "piccolo", "fiore", "giallo"],
   ["il", "vecchio", "ruvido", "tavolo", "grande"],
   ["la", "giacca", "blu", "corta", "buona"],
@@ -42,7 +42,7 @@ const italianItems = [
   ["la", "porta", "rossa", "antica", "ruvida"],
   ["la", "finestra", "verde", "piccola", "brutta"],
   ["la", "macchina", "grande", "vecchia", "lenta"],
-  ["la", "macchina", "rossa", "ottima", "lento"],
+  ["la", "macchina", "rossa", "ottima", "lenta"],
   ["il", "libro", "eccellente", "vecchio", "verde"]
 ];
 
