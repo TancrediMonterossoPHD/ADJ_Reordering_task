@@ -1,16 +1,16 @@
 // --- ITEMS PER LINGUA ---
 
 const englishItems = [
-  ["the", "red", "big", "old", "dog"],
-  ["the", "young", "small", "blue", "cat"],
+  ["the", "brown", "big", "old", "dog"],
+  ["the", "young", "small", "grey", "cat"],
   ["the", "good", "big", "green", "book"],
-  ["the", "old", "bad", "transparent", "glass"],
+  ["the", "old", "ugly", "transparent", "glass"],
   ["the", "red", "rough", "small", "plate"],
   ["the", "slow", "old", "big", "truck"],
   ["the", "green", "young", "tall", "tree"],
   ["the", "small", "good", "blue", "watch"],
   ["the", "big", "red", "old", "shoe"],
-  ["the", "bad", "small", "yellow", "flower"],
+  ["the", "beautiful", "small", "yellow", "flower"],
   ["the", "old", "rough", "big", "table"],
   ["the", "good", "small", "blue", "jacket"],
   ["the", "slow", "old", "red", "bicycle"],
@@ -18,8 +18,8 @@ const englishItems = [
   ["the", "old", "big", "yellow", "pencil"],
   ["the", "old", "red", "rough", "door"],
   ["the", "bad", "small", "blue", "window"],
-  ["the", "slow", "big", "old", "shoe"],
-  ["the", "fast", "bad", "red", "truck"],
+  ["the", "fast", "big", "old", "car"],
+  ["the", "slow", "bad", "red", "truck"],
   ["the", "good", "old", "green", "book"]
 ];
 
